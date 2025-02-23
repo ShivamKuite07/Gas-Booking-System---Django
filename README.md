@@ -1,5 +1,9 @@
 
+
+![Demo GIF](demo.gif)
+
 ---
+
 
 ### Read workflow.md to understand the project structure and workflow.
 

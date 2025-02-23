@@ -1,6 +1,7 @@
 ### **Complete Workflow of the Gas Utility System**  
 
-This is a simple, **Django-based gas utility system** with an **admin panel, cylinder booking, complaint handling, and payment processing**. The logistics (delivery, tracking) are abstracted, focusing only on **inventory and user requests**.  
+This is a simple, **Django-based gas utility system** with an **admin panel, cylinder booking, complaint handling, and payment processing**. The logistics (delivery, tracking) are abstracted, focusing only on **inventory and user requests**. 
+ 
 
 ---
 
@@ -79,6 +80,7 @@ This is a simple, **Django-based gas utility system** with an **admin panel, cyl
 
 ✔ **Users can own only 1 cylinder at a time**  
 ✔ **First-time users get a new cylinder**  
+✔ **When we book a cylinder, we are assuming that logistics are already in place**
 ✔ **Returning users get a new cylinder, and their old one is marked empty**  
 ✔ **Filled cylinders are allocated using FIFO (oldest stock first)**  
 ✔ **Admin can manually override any allocation or complaint**  
