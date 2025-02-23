@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>Booking List</h1>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Booking ID</th>
+            <th>User</th>
+            <th>Cylinder</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.id }}</td>
+            <td>{{ booking.user.username }}</td>
+            <td>{{ booking.cylinder.cylinder_id }}</td>
+            <td>{{ booking.status }}</td>
+            <td><a href="{% url 'admin_booking_update' booking.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>Cylinder List</h1>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Cylinder ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Assigned To</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cylinder in cylinders %}
+        <tr>
+            <td>{{ cylinder.cylinder_id }}</td>
+            <td>{{ cylinder.status }}</td>
+            {% if cylinder.assigned_to %}
+                <td>{{cylinder.assigned_to.username}}</td>
+            {% else %}
+                <td>None</td>
+            {% endif %}
+            <td><a href="{% url 'admin_cylinder_update' cylinder.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

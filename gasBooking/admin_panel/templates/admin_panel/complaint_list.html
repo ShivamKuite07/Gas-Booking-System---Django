@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>Complaint List</h1>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Complaint ID</th>
+            <th scope="col">User</th>
+            <th scope="col">Issue Type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for complaint in complaints %}
+        <tr>
+            <td>{{ complaint.id }}</td>
+            <td>{{ complaint.user.username }}</td>
+            <td>{{ complaint.issue_type }}</td>
+            <td>{{ complaint.description }}</td>
+            <td>{{ complaint.status }}</td>
+            <td><a href="{% url 'admin_complaint_update' complaint.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

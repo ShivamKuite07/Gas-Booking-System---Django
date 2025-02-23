@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">User Dashboard</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Currently Owned Cylinder</h2>
+            {% if current_cylinder %}
+                <p class="card-text">Cylinder ID: {{ current_cylinder.cylinder_id }}</p>
+                <p class="card-text">Status: {{ current_cylinder.status }}</p>
+            {% else %}
+                <p class="card-text">You do not currently own a cylinder.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3 mb-2">
+            <a href="{% url 'book_cylinder' %}" class="btn btn-primary btn-block">Book Cylinder</a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="{% url 'submit_complaint' %}" class="btn btn-secondary btn-block">Submit Complaint</a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="{% url 'booking_history' %}" class="btn btn-info btn-block">Booking History</a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="{% url 'complaint_status' %}" class="btn btn-warning btn-block">Complaint Status</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<div>
+    <h2>Bookings</h2>
+    <ul>
+        {% for booking in bookings %}
+        <li>{{ booking.cylinder.cylinder_id }} - {{ booking.status }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Complaints</h2>
+    <ul>
+        {% for complaint in complaints %}
+        <li>{{ complaint.issue_type }} - {{ complaint.status }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Payments</h2>
+    <ul>
+        {% for payment in payments %}
+        <li>{{ payment.amount }} - {{ payment.status }}</li>
+        {% endfor %}
+    </ul>
+</div>
